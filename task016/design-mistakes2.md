@@ -590,7 +590,7 @@ class ContinuedPolicyTest {
     // ограничение для IN (${statusesList}) это суть сериализация той же политики,
     // которой пользуется ReadActor (теперь это не строка типа "3,4,5")
     @Test
-    public void sqlCriteriaIsASerializationOfTheSamePolicy() {
+    public void sqlStringAsPolicy() {
         for (ContinuedPolicy policy : ContinuedPolicy.values()) {
             FindDoneByOperationCriteria criteria =
                     new FindDoneByOperationCriteria(3L, 1L, policy.runTypeId, 1000);
@@ -603,7 +603,7 @@ class ContinuedPolicyTest {
     }
 
     @Test
-    public void statusIdsMatchLegacyConstantsStoredInDatabase() {
+    public void statusIdsMatches() {
         assertEquals(RunData.STATUS_DONE, DONE.id);
         assertEquals(RunData.STATUS_ERR, ERR.id);
         assertEquals(RunData.STATUS_PARTLY_DONE, PARTLY_DONE.id);
